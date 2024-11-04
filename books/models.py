@@ -8,6 +8,11 @@ class Author(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     is_deleted = models.BooleanField(default=False)
 
+    def delete(self, *args, **kwargs):
+        # 假刪除：將 is_deleted 設為 True，而不是實際刪除記錄
+        self.is_deleted = True
+        self.save()
+
     def __str__(self):
         return self.name
 
@@ -18,6 +23,11 @@ class Book(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     is_deleted = models.BooleanField(default=False)
+
+    def delete(self, *args, **kwargs):
+        # 假刪除：將 is_deleted 設為 True，而不是實際刪除記錄
+        self.is_deleted = True
+        self.save()
 
     def __str__(self):
         return self.title
@@ -30,11 +40,21 @@ class BookAuthor(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     is_deleted = models.BooleanField(default=False)
 
+    def delete(self, *args, **kwargs):
+        # 假刪除：將 is_deleted 設為 True，而不是實際刪除記錄
+        self.is_deleted = True
+        self.save()
+
 class Store(models.Model):
     name = models.CharField(max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     is_deleted = models.BooleanField(default=False)
+
+    def delete(self, *args, **kwargs):
+        # 假刪除：將 is_deleted 設為 True，而不是實際刪除記錄
+        self.is_deleted = True
+        self.save()
 
 class Order(models.Model):
     store = models.ForeignKey(Store, on_delete=models.CASCADE, related_name="orders")
@@ -43,6 +63,11 @@ class Order(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     is_deleted = models.BooleanField(default=False)
 
+    def delete(self, *args, **kwargs):
+        # 假刪除：將 is_deleted 設為 True，而不是實際刪除記錄
+        self.is_deleted = True
+        self.save()
+
 class OrderRetail(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
@@ -50,5 +75,10 @@ class OrderRetail(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     is_deleted = models.BooleanField(default=False)
+
+    def delete(self, *args, **kwargs):
+        # 假刪除：將 is_deleted 設為 True，而不是實際刪除記錄
+        self.is_deleted = True
+        self.save()
 
     
