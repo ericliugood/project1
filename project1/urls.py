@@ -18,10 +18,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from rest_framework.routers import DefaultRouter
+from books.views import AuthorModelViewSet,BookModelViewSet,BookAuthorModelViewSet,StoreModelViewSet,OrderModelViewSet,OrderRetailModelViewSet
 
 router = DefaultRouter()
-
+router.register(r'author', AuthorModelViewSet)
+router.register(r'book', BookModelViewSet)
+router.register(r'bookauthor', BookAuthorModelViewSet)
+router.register(r'store', StoreModelViewSet)
+router.register(r'order', OrderModelViewSet)
+router.register(r'orderretail', OrderRetailModelViewSet)
 
 urlpatterns = [
-     path('api/v1', include(router.urls)),
+     path('api/v1/', include(router.urls)),
 ]
