@@ -76,9 +76,13 @@ WSGI_APPLICATION = "project1.wsgi.application"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'mydatabase',
+        'USER': 'userlwl',
+        'PASSWORD': 's9meKpb7cs7Egb',
+        'HOST': 'localhost',  # 或資料庫的 IP 地址
+        'PORT': '10254',       # PostgreSQL 預設端口
     }
 }
 
