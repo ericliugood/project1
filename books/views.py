@@ -23,17 +23,6 @@ class BookModelViewSet(viewsets.ModelViewSet):
         instance = self.get_object()
         instance.delete()  # 呼叫假刪除方法
         return Response(status=status.HTTP_204_NO_CONTENT)
-    
-
-class BookAuthorModelViewSet(viewsets.ModelViewSet):
-    queryset = BookAuthor.objects.all()  # 使用過濾後的查詢集
-    serializer_class = BookAuthorSerializer
-
-    def destroy(self, request, *args, **kwargs):
-        instance = self.get_object()
-        instance.delete()  # 呼叫假刪除方法
-        return Response(status=status.HTTP_204_NO_CONTENT)
-    
 
 class StoreModelViewSet(viewsets.ModelViewSet):
     queryset = Store.objects.all()  # 使用過濾後的查詢集
